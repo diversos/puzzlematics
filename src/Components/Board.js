@@ -11,8 +11,12 @@ class Board extends Component {
         this.state = {
             score: 0,
             data: [
-                { answer: true, src: "/images/shift.png" },
-                { answer: true, src: "/images/shift.png" }
+               { answer: true, src: '/images/verde.png' },
+               { answer: false, src: '/images/arvore.png' },
+               { answer: true, src: '/images/code.png' },
+               { answer: false, src: '/images/code2.png' },
+               { answer: false, src: '/images/code3.png' },
+               { answer: true, src: '/images/code4.png' }
             ]
         };
     }
