@@ -56,7 +56,7 @@ class Board extends Component {
         let element = $('#highlight').addClass( "highlight-"+answer );
         setTimeout( () => {
             element.removeClass( "highlight-"+answer )
-        }, 3000 );
+        }, 1000 );
     }
 
 

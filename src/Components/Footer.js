@@ -77,44 +77,13 @@ class Footer extends Component {
                 </div>
             )
         }
-        else {
-            return (
-                <div className = "row" >
-                    <div className = "col" >
-                        <button className = "btn btn-reset" onClick = { this.resetTime } > Reset </button>
-                    </div>
-                    <div className = "col" >
-                        {   !this.props.shouldStopTimer ?
-                                !this.state.isStoped ?
-                                    <button className = "btn btn-stop" onClick = { this.clickTime } > Stop </button>
-                                :
-                                    <button className = "btn btn-start" onClick = { this.clickTime } > Continue </button>
-                            :
-                                null
-                        }
-                    </div>
-                </div>
-            )
-        }
+        return null;
     }
 
     clickStart = () => {
         $('#boardGame').removeClass("invisible");
-        this.clickTime();
+        this.tickStart();
     }
-
-    clickTime = () => {
-        this.state.isStoped ? this.tickStart() : this.tickStop();
-        this.setState({ isStoped: !this.state.isStoped });
-    }
-
-    resetTime = () => {
-        $('#boardGame').addClass("invisible");
-        this.props.updateScore(0);
-        this.tickStop();
-        this.setState({ isStoped: true, time: execTime});
-    }
-
 }
 
 export default Footer;
