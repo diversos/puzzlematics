@@ -44,7 +44,7 @@ class Footer extends Component {
                     <div className = "col" >
                         Time: { this.formatTime() }
                     </div>
-                    <div className = "col" >
+                    <div className = "col buttons" >
                         { this.renderButtons() }
                     </div>
                 </div>
