@@ -2,9 +2,6 @@ import React, { Component } from 'react';
 import $ from 'jquery';
 import Cards, { Card } from 'react-swipe-card';
 
-import shift from './../shift.png';
-import shift1 from './../shift1.png';
-
 const answerPoints = 20;
 
 class Board extends Component {
@@ -13,7 +10,10 @@ class Board extends Component {
         super( props );
         this.state = {
             score: 0,
-            data: [{answer:true},{answer:false},1,1,1,1,1,1,1,1,1,1,1,1,1]
+            data: [
+                { answer: true, src: "/shift.png" },
+                { answer: true, src: "/shift.png" }
+            ]
         };
     }
 
@@ -37,7 +37,7 @@ class Board extends Component {
                                 onSwipeLeft = { () => { this.isCorrect( !round.answer ) } }
                                 onSwipeRight = { () => { this.isCorrect( round.answer ) } }
                             >
-                                <img className = "board-piece" src = { shift } alt = "" />
+                                <img className = "board-piece" src = { round.src } alt = "" />
                             </Card>
                         )
                     }

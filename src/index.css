@@ -24,6 +24,14 @@ body {
     font-size: 26px;
 }
 
+.highlight-true {
+    background-color: green;
+}
+
+.highlight-false {
+    background-color: red;
+}
+
 .button-exit {
     height: 20px;
     width: 20px;
