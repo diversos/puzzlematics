@@ -3,6 +3,12 @@ import $ from 'jquery';
 
 const execTime = 300;
 
+export const smallTime = (time) => {
+    if( time < 10 ) time = '0' + time;
+
+    return '' + time;
+}
+
 class Footer extends Component {
 
     constructor( props ) {
@@ -22,30 +28,35 @@ class Footer extends Component {
         this.tickStop();
     }
 
-    tickStart = () => {
-        this.timer = setInterval(this.tick, 1000);
-    }
-
-    tickStop = () => {
+    tickStop() {
         clearInterval(this.timer);
     }
 
     tick = () => {
-        if( this.state.time > 0 )
-            this.setState({ time: this.state.time - 1 });
+        const stateTime = this.state.time;
+
+        if( stateTime > 0 )
+            this.setState({ time: stateTime - 1 });
         else
             this.tickStop();
     }
 
     render() {
         return (
-            <div className = "footer" >
-                <div className = "row" >
-                    <div className = "col" >
+            <div className = 'footer' >
+                <div className = 'row' >
+                    <div className = 'col' >
                         Tempo: { this.formatTime() }
                     </div>
-                    <div className = "col buttons" >
-                        { this.renderButtons() }
+                    <div className = 'col buttons' >
+                        {   this.state.time === execTime &&
+                        <button
+                            className = 'btn btn-start'
+                            onClick = { this.clickStart }
+                        >
+                            Começar
+                        </button>
+                        }
                     </div>
                 </div>
             </div>
@@ -55,34 +66,17 @@ class Footer extends Component {
     formatTime = () => {
         let time = this.state.time;
 
-        if(time < 60){
-            return "00:" + this.smallTime( time );
+        if( time < 60 ) {
+            return '00:' + smallTime( time );
         }
-        else if(time < 3600){
-            return "" + this.smallTime( Math.floor( time/60 ) ) + ":" + this.smallTime( Math.floor( time%60 ) );
+        else if( time < 3600 ) {
+            return '' + smallTime( Math.floor( time / 60 ) ) + ':' + smallTime( Math.floor( time % 60 ) );
         }
-    }
-
-    smallTime = (time) => {
-        if( time < 10 ) time = "0" + time;
-        return time;
-    }
-
-    renderButtons = () => {
-
-        if ( this.state.time === execTime ) {
-            return (
-                <div >
-                    <button className = "btn btn-start" onClick = { this.clickStart } > Começar </button>
-                </div>
-            )
-        }
-        return null;
     }
 
     clickStart = () => {
-        $('#boardGame').removeClass("invisible");
-        this.tickStart();
+        $( '#boardGame' ).removeClass( 'invisible' );
+        this.timer = setInterval( this.tick, 1000 );
     }
 }
 

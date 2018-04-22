@@ -2,23 +2,13 @@ import React, { Component } from 'react';
 
 class Header extends Component {
 
-    constructor( props ) {
-        super( props );
-        this.state = {
-
-        };
-    }
-
     render() {
         return (
-            <div id = "highlight" className = "header" >
-                <div className = "" >
-                    <div className = "" > Pontuação: { this.props.score } </div>
-                </div>
+            <div id = 'highlight' className = 'header' >
+                Pontuação: { this.props.score }
             </div>
         );
     }
-
 }
 
 export default Header;

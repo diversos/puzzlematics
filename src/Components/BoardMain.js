@@ -16,23 +16,22 @@ class BoardMain extends Component {
 
     render() {
         return (
-            <div className = "" >
-                <Header score = {this.state.score} />
-                <Board stopTimer = { this.stopTimer } updateScore = { this.updateScore } score = { this.state.score } />
-                <Footer shouldStopTimer = { this.state.shouldStopTimer } updateScore = { this.updateScore } />
+            <div className = '' >
+                <Header score = { this.state.score } />
+                <Board stopTimer = { this.stopTimer } updateScore = { this.updateScore } />
+                <Footer shouldStopTimer = { this.state.shouldStopTimer } />
             </div>
         );
     }
 
     stopTimer = () => {
         if ( !this.state.shouldStopTimer )
-            this.setState({ shouldStopTimer: true });
+            this.setState( { shouldStopTimer: true } );
     }
 
     updateScore = ( score ) => {
-        this.setState({ score: score });
+        this.setState( { score: score } );
     }
-
 }
 
 export default BoardMain;
