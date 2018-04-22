@@ -45,7 +45,7 @@ class Board extends Component {
         );
     }
 
-    isCorrect = ( answer ) => {
+    isCorrect ( answer ) {
         if ( answer ) {
             const newScore = this.state.score + answerPoints;
             this.setState({ score: newScore });
