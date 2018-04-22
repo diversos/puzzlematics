@@ -64,6 +64,14 @@ body {
     width: 100%;
 }
 
+.highlight-true {
+    background-color: green;
+}
+
+.highlight-false {
+    background-color: red;
+}
+
 html {
     -webkit-touch-callout: none;
     -webkit-user-select: none;
@@ -90,6 +98,10 @@ li {
 
 h1, h2 {
     font-weight: 500;
+}
+
+.invisible {
+    visibility: hidden;
 }
 
 .master-root {
@@ -143,7 +155,7 @@ h1, h2 {
 .alert-right {
     top: 0;
     right: 0;
-    background: green;
+    /*background: green;*/
     border-top-left-radius: 50px;
     border-bottom-left-radius: 50px;
 }
@@ -151,7 +163,7 @@ h1, h2 {
 .alert-left {
     top: 0;
     left: 0;
-    background: red;
+    /*background: red;*/
     border-top-right-radius: 50px;
     border-bottom-right-radius: 50px;
 }

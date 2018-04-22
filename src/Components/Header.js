@@ -5,15 +5,15 @@ class Header extends Component {
     constructor( props ) {
         super( props );
         this.state = {
-            score : 0
+
         };
     }
 
     render() {
         return (
-            <div className = "header" >
+            <div id = "highlight" className = "header" >
                 <div className = "" >
-                    <div className = "" > Score: { this.state.score } </div>
+                    <div className = "" > Score: { this.props.score } </div>
                 </div>
             </div>
         );

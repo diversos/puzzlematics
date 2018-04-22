@@ -1,17 +1,21 @@
 import React, { Component } from 'react';
+import $ from 'jquery';
+
+const execTime = 300;
 
 class Footer extends Component {
 
     constructor( props ) {
         super( props );
         this.state = {
-            time : 0,
-            isStoped : true
+            time : execTime
         };
     }
 
-    componentDidMount() {
-        //this.tickStart();
+    componentWillReceiveProps( nextProps ) {
+        if( nextProps.shouldStopTimer ){
+            this.tickStop();
+        }
     }
 
     componentWillUnmount(){
@@ -27,7 +31,10 @@ class Footer extends Component {
     }
 
     tick = () => {
-        this.setState({ time: this.state.time + 1 });
+        if( this.state.time > 0 )
+            this.setState({ time: this.state.time - 1 });
+        else
+            this.tickStop();
     }
 
     render() {
@@ -63,10 +70,10 @@ class Footer extends Component {
 
     renderButtons = () => {
 
-        if ( !this.state.time ) {
+        if ( this.state.time === execTime ) {
             return (
                 <div >
-                    <button className = "btn btn-start" onClick = { this.clickTime } > Start </button>
+                    <button className = "btn btn-start" onClick = { this.clickStart } > Start </button>
                 </div>
             )
         }
@@ -77,15 +84,23 @@ class Footer extends Component {
                         <button className = "btn btn-reset" onClick = { this.resetTime } > Reset </button>
                     </div>
                     <div className = "col" >
-                        { !this.state.isStoped ?
-                                <button className = "btn btn-stop" onClick = { this.clickTime } > Stop </button>
+                        {   !this.props.shouldStopTimer ?
+                                !this.state.isStoped ?
+                                    <button className = "btn btn-stop" onClick = { this.clickTime } > Stop </button>
+                                :
+                                    <button className = "btn btn-start" onClick = { this.clickTime } > Continue </button>
                             :
-                                <button className = "btn btn-start" onClick = { this.clickTime } > Continue </button>
+                                null
                         }
                     </div>
                 </div>
             )
         }
+    }
+
+    clickStart = () => {
+        $('#boardGame').removeClass("invisible");
+        this.clickTime();
     }
 
     clickTime = () => {
@@ -94,8 +109,10 @@ class Footer extends Component {
     }
 
     resetTime = () => {
+        $('#boardGame').addClass("invisible");
+        this.props.updateScore(0);
         this.tickStop();
-        this.setState({ isStoped: true, time: 0});
+        this.setState({ isStoped: true, time: execTime});
     }
 
 }
