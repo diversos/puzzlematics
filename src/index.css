@@ -19,13 +19,9 @@ body {
 .header {
     margin: auto;
     height: 80px;
-
+    background-color: #4F4F4F;
     line-height: 80px;
     font-size: 26px;
-}
-
-.header-color {
-    background-color: #4F4F4F;
 }
 
 

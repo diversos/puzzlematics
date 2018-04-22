@@ -42,7 +42,7 @@ class Footer extends Component {
             <div className = "footer" >
                 <div className = "row" >
                     <div className = "col" >
-                        Time: { this.formatTime() }
+                        Tempo: { this.formatTime() }
                     </div>
                     <div className = "col buttons" >
                         { this.renderButtons() }
@@ -73,7 +73,7 @@ class Footer extends Component {
         if ( this.state.time === execTime ) {
             return (
                 <div >
-                    <button className = "btn btn-start" onClick = { this.clickStart } > Start </button>
+                    <button className = "btn btn-start" onClick = { this.clickStart } > Começar </button>
                 </div>
             )
         }

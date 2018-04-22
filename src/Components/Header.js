@@ -13,7 +13,7 @@ class Header extends Component {
         return (
             <div id = "highlight" className = "header" >
                 <div className = "" >
-                    <div className = "" > Score: { this.props.score } </div>
+                    <div className = "" > Pontuação: { this.props.score } </div>
                 </div>
             </div>
         );

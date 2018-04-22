@@ -57,10 +57,10 @@ class Board extends Component {
             this.setState({ score: newScore });
             this.props.updateScore( newScore );
         }
-        let element = $('#highlight').addClass( "highlight-"+answer );
+        let element = $('#highlight').addClass( "highlight-" + answer );
         setTimeout( () => {
-            element.removeClass( "highlight-"+answer )
-        }, 1000 );
+            element.removeClass( "highlight-" + answer )
+        }, 2000 );
     }
 
 
